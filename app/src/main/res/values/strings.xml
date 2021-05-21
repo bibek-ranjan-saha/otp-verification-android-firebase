@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">phone auth otp demo</string>
+    <string-array name="Language">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>Telegu</item>
+        <item>Bangoli</item>
+        <item>Odia</item>
+        <item>Marathi</item>
+    </string-array>
+</resources>

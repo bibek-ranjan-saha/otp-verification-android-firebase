@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".profile">
+
+    <TextView
+        android:textColor="#0027FF"
+        android:id="@+id/textView4"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Language is :"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:textColor="#673AB7"
+        android:id="@+id/textView5"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone number is :"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:textColor="#9C27B0"
+        android:id="@+id/textView6"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile Type is :"
+        android:textSize="30sp"/>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/btnstyle"
+        android:text="Log out"
+        android:textSize="16dp"
+        app:backgroundTint="@null"/>
+
+    <TextView
+        android:textColor="#2196F3"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="made with ❤ by bibek saha"
+        android:textSize="22sp"/>
+
+</LinearLayout>
