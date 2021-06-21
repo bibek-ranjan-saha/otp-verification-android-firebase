@@ -32,14 +32,16 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.mukesh.OnOtpCompletionListener;
+import com.mukesh.OtpView;
 
 import java.util.concurrent.TimeUnit;
 
 public class manageotp extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks {
 
-    EditText o1;
+    OtpView o1;
     Button b2;
-    ImageView back_btn;
+//    ImageView back_btn;
     FirebaseAuth mAuth;
     String otpnum;
     String verificationcode;
@@ -61,11 +63,12 @@ public class manageotp extends AppCompatActivity implements GoogleApiClient.Conn
 
         db = FirebaseFirestore.getInstance();
 
-        apikey = "6LefQNwaAAAAAM4YUajfB6Udzb6qZMxL_WAwSOpp";
+        privatekeys privatekeys = new privatekeys();
+        apikey = privatekeys.apikey;
 
         o1 = findViewById(R.id.otp1);
 
-        back_btn = findViewById(R.id.back);
+//        back_btn = findViewById(R.id.back);
         b2 = findViewById(R.id.button);
 
         //getting phone number from previous activity
@@ -73,7 +76,12 @@ public class manageotp extends AppCompatActivity implements GoogleApiClient.Conn
         tv2.setText(tv2.getText().toString()+phone);
 
 
-        otpnum = o1.getText().toString();
+        o1.setOtpCompletionListener(new OnOtpCompletionListener() {
+            @Override public void onOtpCompleted(String otp) {
+                otpnum = otp;
+                b2.setEnabled(true);
+            }
+        });
 
         //calling send otp method on startup of activity
         SendVerificationToUser(phone);
@@ -106,10 +114,9 @@ public class manageotp extends AppCompatActivity implements GoogleApiClient.Conn
                     }
                 });
 
-        back_btn.setOnClickListener(v -> onBackPressed());
+//        back_btn.setOnClickListener(v -> onBackPressed());
 
         b2.setOnClickListener(v -> {
-            otpnum = o1.getText().toString();
             verifyCode(otpnum);
         });
 

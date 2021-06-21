@@ -14,7 +14,8 @@
         <activity android:name=".profile"></activity>
         <activity android:name=".PhoneNum" />
         <activity android:name=".dashboard" />
-        <activity android:name=".manageotp" />
+        <activity android:name=".manageotp"
+            android:parentActivityName=".PhoneNum"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
