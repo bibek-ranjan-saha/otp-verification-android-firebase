@@ -74,6 +74,7 @@
             android:id="@+id/editText"
             android:textAlignment="center"
             android:textSize="16sp"
+            android:textCursorDrawable="@color/black"
             android:inputType="phone"
             android:textColorHint="#6A6C7B"
             android:layout_width="match_parent"

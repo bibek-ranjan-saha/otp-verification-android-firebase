@@ -43,14 +43,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.mukesh.OtpView
+        style="@style/OtpWidget.OtpView"
         android:id="@+id/otp1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberPassword"
         app:cursorColor="@color/black"
         android:itemBackground="#93D2F3"
-        android:textColor="@android:color/white"
+        app:lineColor="@color/white"
+        android:textColor="@color/black"
         app:itemCount="6"
+        app:itemHeight="50dp"
+        android:width="50dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +98,7 @@
         android:background="@drawable/btnstyle"
         android:text="VERIFY AND CONTINUE"
         android:textSize="16dp"
+        android:textColor="@color/white"
         android:enabled="false"
         android:hapticFeedbackEnabled="true"
         android:soundEffectsEnabled="true"

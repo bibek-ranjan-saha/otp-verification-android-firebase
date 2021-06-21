@@ -1,5 +1,6 @@
 package com.crazy.phoneauthotpdemo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +11,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class dashboard extends AppCompatActivity {
@@ -37,6 +40,10 @@ public class dashboard extends AppCompatActivity {
         b1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (b2.isChecked())
+                {
+                    b2.setChecked(false);
+                }
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("type","shipper");
                 editor.apply();
@@ -46,6 +53,10 @@ public class dashboard extends AppCompatActivity {
         b2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (b1.isChecked())
+                {
+                    b1.setChecked(false);
+                }
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("type","transporter");
                 editor.apply();
@@ -53,18 +64,10 @@ public class dashboard extends AppCompatActivity {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (b1.isChecked() || b2.isChecked()){
-                    db.collection("User")
-                            .document().set(appD).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            startActivity(new Intent(dashboard.this,profile.class));
-                        }
-                    });
-                }
+        button.setOnClickListener(v -> {
+            if (b1.isChecked() || b2.isChecked()){
+                db.collection("User")
+                        .document().set(appD).addOnCompleteListener(task -> startActivity(new Intent(getApplicationContext(),profile.class)));
             }
         });
 
